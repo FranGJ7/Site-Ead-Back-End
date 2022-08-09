@@ -2,6 +2,7 @@ import AdminJS from "adminjs";
 import AdminJSExpress from "@adminjs/express"
 import AdminJSSequelize from "@adminjs/sequelize"                                // mostrar ORM usada na aplicação
 import { sequelize } from "../database";
+import { adminJsResources } from "./resources";
 
 
 AdminJS.registerAdapter(AdminJSSequelize)
@@ -9,6 +10,7 @@ AdminJS.registerAdapter(AdminJSSequelize)
 export const adminJs = new AdminJS({
     databases: [sequelize],   // está em arrray por poder usar mais de um banco de dados 
     rootPath: "/admin",       // referencia de rota para se conectar com o adminJs
+    resources: adminJsResources,  //Incluindo no painel AdminJS
     branding:{                // Estilizar adminJS   
         companyName: 'OneBitFlix',
         logo: '/onebitflix.svg',

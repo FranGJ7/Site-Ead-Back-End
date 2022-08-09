@@ -9,3 +9,5 @@ module.exports = {
 
 
 //Alterando configurações padrão do sequelize caminho de pastas
+
+// migrations criada através de path  comando => npx sequelize-cli migration:generate --name create-categories-table
