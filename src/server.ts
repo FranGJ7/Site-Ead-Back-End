@@ -1,7 +1,18 @@
 import express from "express"
+import { adminJs, adminJsRouter } from "./adminjs";
 import { sequelize } from "./database";
 
 const app = express()
+
+app.use(express.static('public'))
+
+
+app.use(adminJs.options.rootPath, adminJsRouter) // pegando rota
+
+
+
+
+
 
 const PORT = process.env.PORT || 3000
 
