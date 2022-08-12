@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 
 'use strict';
-
+                                                     //criando seeders para criar usuário padrão Admin
 module.exports = {
   async up(queryInterface, Sequelize) {
     const hashedPassword = await bcrypt.hash('123456', 10)
