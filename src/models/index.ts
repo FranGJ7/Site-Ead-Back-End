@@ -4,7 +4,7 @@ import { Episode } from "./Episode";
 import { User } from "./User";
 
                                    //associação entre tabelas 
-Category.hasMany(Course)           //Categoria curso pode ter mais associações hasMany
+Category.hasMany(Course, { as: 'courses'})           //Categoria curso pode ter mais associações hasMany
 Course.belongsTo(Category)         //Cursos pode pertencer a apenas uma tabela belongsTo
 Course.hasMany(Episode)
 Episode.belongsTo(Course)
