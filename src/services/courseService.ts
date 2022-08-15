@@ -7,7 +7,7 @@ export const courseService ={
             'id',
             'name',
             'synopsis',
-            ['thumbnail_url', 'thumbnailUrl']
+            ['thumbnail_url', 'thumbnailUrl']      //Buscando cursos com episódios
         ],
         include:{
             association:'episodes',
@@ -26,7 +26,7 @@ export const courseService ={
     return courseWithEpisodes
 },
    getRandomFeaturedCourses: async () =>{
-    const featuredCourses =await Course.findAll({
+    const featuredCourses =await Course.findAll({    //Obtendo corsos em destaque
         attributes:[
             'id',
             'name',
@@ -39,5 +39,16 @@ export const courseService ={
     })
     const randomFeturedCourses = featuredCourses.sort(()=> 0.5 - Math.random())
      return randomFeturedCourses.slice(0, 3)
+   },
+
+   getTopTenNewest: async () => {
+    const courses = await Course.findAll({  //top 10 lançamentos de cursos
+        limit: 10,
+        order: [['created_at', 'DESC']]
+    })
+
+    return courses
    }
+
+
 }
