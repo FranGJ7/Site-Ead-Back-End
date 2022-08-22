@@ -36,6 +36,24 @@ export const coursesController = {
         }
     },
 
+
+
+     //Obtendo 10 Cursos populares
+     popular: async (req: Request, res: Response) => {
+        try {
+          const topTen = await courseService.getTopTenByLikes()
+          return res.json(topTen)
+        } catch (err) {
+          if (err instanceof Error) {
+            return res.status(400).json({ message: err.message })
+          }
+        }
+      },
+
+
+
+
+
     
      //Fazendo buscas de curso  search?name
 
