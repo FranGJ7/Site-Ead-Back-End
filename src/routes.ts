@@ -6,6 +6,7 @@ import { episodesController } from "./controllers/episodesController"
 import { favoritesController } from "./controllers/favoritesController"
 import { ensureAuth, ensureAuthViaQuery } from "./middlewares/auth"
 import { likesController } from './controllers/likesController'
+import { usersController } from './controllers/usersController'
 
 const router = express.Router()
 
@@ -33,5 +34,7 @@ router.delete('/favorites/:id', ensureAuth, favoritesController.delete)
 
 router.post('/likes', ensureAuth, likesController.save)
 router.delete('/likes/:id', ensureAuth, likesController.delete)
+
+router.get('/users/current/watching', ensureAuth, usersController.watching)
 
 export { router }
