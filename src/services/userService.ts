@@ -27,12 +27,6 @@ function filterLastEpisodesByCourse(episodes: EpisodeInstance[]) {
   }
 
 
-
-
-
-
-
-
 export const userService ={
     finByEmail: async (email: string) =>{
         const user = await User.findOne({  //Buscando apenas 1 usuário atráves do email
@@ -48,6 +42,26 @@ export const userService ={
         return user
 
     },
+
+
+    update: async (id: number, attributes: {
+      firstName: string
+      lastName: string
+      phone: string
+      birth: Date
+      email: string
+    }) => {
+      const [affectedRows, updatedUsers] = await User.update(attributes, { where: { id }, returning: true })
+  
+      return updatedUsers[0]
+    },
+
+   
+
+
+
+
+
 
   
     getKeepWatchingList: async (id: number) => {
